@@ -1,4 +1,14 @@
 """
+    strsingle(path::String)::String
+
+Converts input file to a single string, omitting the final newline character.
+
+# arguments
+* `path` : Path to input file.
+"""
+strsingle(path::String)::String = open(f -> read(f, String), path)[begin:end-1]
+
+"""
     strvec(path::String; keepempty::Bool = false)
 
 Converts input file to a vector of substrings.
