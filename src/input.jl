@@ -9,7 +9,7 @@ Converts input file to a single string, omitting the final newline character.
 strsingle(path::String)::String = open(f -> read(f, String), path)[begin:end-1]
 
 """
-    strvec(path::String; keepempty::Bool = false)
+    strvec(path::String; keepempty::Bool = false)::Vector{SubString{String}}
 
 Converts input file to a vector of substrings.
 
@@ -23,7 +23,7 @@ function strvec(path::String; keepempty::Bool = false)::Vector{SubString{String}
 end
 
 """
-    strvec2(path::String; keepempty::Bool = false)
+    strvec2(path::String; keepempty::Bool = false)::Vector{Vector{SubString{String}}}
 
 Converts input file to a vector of vector of substrings, where subvectors are delimited by
 an empty line.
@@ -42,7 +42,7 @@ function strvec2(path::String, keepempty::Bool = false)::Vector{Vector{SubString
 end
 
 """
-    intvec(path::String)
+    intvec(path::String)::Vector{Int64}
 
 Converts input file to a vector of integers.
 
@@ -52,7 +52,7 @@ Converts input file to a vector of integers.
 intvec(path::String)::Vector{Int64} = parse.(Int64, strvec(path))
 
 """
-    intvec2(path::String)
+    intvec2(path::String)::Vector{Vector{Int64}}
 
 Converts input file to a vector of vector of integers, where subvectors are delimited by
 an empty line.
