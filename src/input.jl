@@ -15,11 +15,16 @@ Converts input file to a vector of substrings.
 
 # Arguments
 * `path` : Path to input file.
+* `dlm` : Delimiter to use for substrings. Defaults to a newline character (`\n`).
 # Keyword Arguments
 * `keepempty` : Whether to keep empty substrings in the vector. Defaults to false.
 """
-function strvec(path::String; keepempty::Bool = false)::Vector{SubString{String}}
-    split(open(f -> read(f, String), path), "\n", keepempty=keepempty)
+function strvec(
+    path::String,
+    dlm::String = "\n";
+    keepempty::Bool = false
+)::Vector{SubString{String}}
+    split(open(f -> read(f, String), path), dlm, keepempty=keepempty)
 end
 
 """
