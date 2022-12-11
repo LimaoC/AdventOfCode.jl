@@ -66,3 +66,19 @@ an empty line.
 * `path` : Path to input file.
 """
 intvec2(path::String)::Vector{Vector{Int64}} = map(v -> parse.(Int64, v), strvec2(path))
+
+"""
+    intmatrix(path::String)::Matrix{Int64}
+
+Converts input file to a matrix of integers.
+
+# Arguments
+* `path` : Path to input file.
+"""
+function intmatrix(path::String)::Matrix{Int64}
+    mapreduce(
+        permutedims,
+        vcat,
+        map(line -> parse.(Int64, split(line, "", keepempty=false)), strvec(path))
+    )
+end

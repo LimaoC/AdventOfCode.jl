@@ -1,7 +1,7 @@
 module AdventOfCode
 
 # input.jl
-export strsingle, strvec, strvec2, intvec, intvec2
+export strsingle, strvec, strvec2, intvec, intvec2, intmatrix
 # util.jl
 export splitequal
 
